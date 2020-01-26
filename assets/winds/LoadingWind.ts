@@ -1,11 +1,14 @@
 import { BaseUI, UIMgr } from "../YK/core/UIMgr/UIMgr"
 import { EventData } from "../YK/core/EventMgr/DispatchEventNode"
 import { TestWind } from "./TestWind"
+import UI_Loading from "../../FGUI/build/Loading/UI_Loading"
 
 export class LoadingWind extends BaseUI
 {
     protected packName = "Loading"
     protected resName = "Loading"
+    protected uiType = UI_Loading;
+    protected ui:UI_Loading;
     public modal: boolean = false
     public dontDel: boolean = true
     protected btnNameStartsWith: string = "Btn"
@@ -15,6 +18,7 @@ export class LoadingWind extends BaseUI
 
     protected OnInitWind()
     {
+        this.ui = this.contentPane as UI_Loading;
         // this.mlabelProgress = this.UIObj.get("labelProgress")
         // this.mlablMsg = this.UIObj.get("lablMsg")
         // this.mlabelProgress.text = "0%"

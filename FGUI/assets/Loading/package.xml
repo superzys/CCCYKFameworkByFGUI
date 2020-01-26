@@ -12,5 +12,5 @@
     <component id="u3qf8" name="TestWind.xml" path="/" exported="true"/>
     <component id="u3qf9" name="BtnIcon.xml" path="/"/>
   </resources>
-  <publish name="Loading" path="F:\GIT\CCCYKFamework\assets\resources\UI" packageCount="2"/>
+  <publish name="Loading" path="/Users/zys/WebWork/Cocos/CCCYKFameworkByFGUI/FGUI/build" packageCount="2" genCode="true" codePath="/Users/zys/WebWork/Cocos/CCCYKFameworkByFGUI/FGUI/build"/>
 </packageDescription>

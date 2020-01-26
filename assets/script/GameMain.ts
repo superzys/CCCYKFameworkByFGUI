@@ -1,6 +1,7 @@
 import LoadingScene from "./scene/LoadingScene";
 import { SceneMgr } from "../YK/core/SceneMgr/SceneMgr";
 import { UIMgr } from "../YK/core/UIMgr/UIMgr";
+import LoadingBinder from "../../FGUI/build/Loading/LoadingBinder";
 
 
 // Learn TypeScript:
@@ -28,6 +29,7 @@ export default class GameMain extends cc.Component {
         
         fgui.addLoadHandler();
         fgui.GRoot.create();
+LoadingBinder.bindAll();
         //fgui.UIPackage.loadPackage("UI/Loading", this.onUILoaded.bind(this));
         SceneMgr.Instance.GoToScene(LoadingScene)
     }

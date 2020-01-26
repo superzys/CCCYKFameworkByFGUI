@@ -141,6 +141,8 @@ export class UIMgr extends DispatchEventNode {
 export abstract class BaseUI extends fgui.Window {
     protected packName = ""
     protected resName = "Main"
+    protected ui:any;
+    protected uiType :any;
     public eventMgr: InterchangeableEventListenerMgr = null;
 
     protected btnCloseNodeName: string = "BtnClose"
@@ -163,7 +165,8 @@ export abstract class BaseUI extends fgui.Window {
         console.log("OnInit")
         this.eventMgr = new InterchangeableEventListenerMgr(this, this.OnHandler)
         if (this.contentPane == null) {
-            let windObj = fgui.UIPackage.createObject(this.packName, this.resName);
+            //et windObj = fgui.UIPackage.createObject(this.packName, this.resName);
+            let windObj = new this.uiType.createInstance();
             windObj.setSize(fgui.GRoot.inst.width, fgui.GRoot.inst.height);
             this.contentPane = windObj.asCom
         }

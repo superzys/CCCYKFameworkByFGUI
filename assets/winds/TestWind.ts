@@ -1,10 +1,13 @@
 import { BaseUI } from "../YK/core/UIMgr/UIMgr"
 import { EventData } from "../YK/core/EventMgr/DispatchEventNode"
+import UI_TestWind from "../../FGUI/build/Loading/UI_TestWind";
 
 export class TestWind extends BaseUI
 {
     protected packName = "Loading"
     protected resName = "TestWind"
+    protected uiType = UI_TestWind;
+    protected ui:UI_TestWind;
     public modal: boolean = true
     public dontDel: boolean = true
     protected btnNameStartsWith: string = "Btn"
@@ -14,7 +17,7 @@ export class TestWind extends BaseUI
 
     protected OnInitWind()
     {
-
+        this.ui = this.contentPane as UI_TestWind;
     }
 
     protected OnShowWind()
