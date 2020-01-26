@@ -32,12 +32,15 @@ export class UIMgr extends DispatchEventNode {
     public GetAllWinds(): Array<fgui.Window> {
         let array: Array<fgui.Window> = new Array<fgui.Window>()
 
-        for (var index = 0; index < fgui.GRoot.inst.numChildren; index++) {
-            var element: fgui.GObject = fgui.GRoot.inst.getChildAt(index)
-            if (element instanceof fgui.Window) {
-                array.push(element)
-            }
-        }
+        this.mWinds.forEach(element => {
+            array.push(element);
+        });
+        // for (var index = 0; index < fgui.GRoot.inst.numChildren; index++) {
+        //     var element: fgui.GObject = fgui.GRoot.inst.getChildAt(index)
+        //     if (element instanceof fgui.Window) {
+        //         array.push(element)
+        //     }
+        // }
         return array
     }
 
@@ -46,11 +49,13 @@ export class UIMgr extends DispatchEventNode {
      * @param type 类型
      */
     public FindWind(type: any) {
-        let array = this.GetAllWinds()
-        return array.find((value: fgui.Window, index: number,
-            obj: Array<fgui.Window>) => {
-            return value instanceof type
-        })
+        // let array = this.GetAllWinds()
+        // return array.find((value: fgui.Window, index: number,
+        //     obj: Array<fgui.Window>) => {
+        //     return value instanceof type
+        // })
+        let wind = this.mWinds[type.name];
+        return wind;
     }
 
     /**
@@ -63,6 +68,7 @@ export class UIMgr extends DispatchEventNode {
         let wind = this.FindWind(type)
         if (wind == null) {
             wind = new type()
+            this.mWinds[type.name]= wind;
         }
         wind.data = param
 
@@ -75,7 +81,8 @@ export class UIMgr extends DispatchEventNode {
         // {
         //     wind.Hide()
         // }
-        let wind = this.FindWind(type)
+        // let wind = this.FindWind(type)
+        let wind = this.mWinds[type.constructor.name];
         if (wind != null) {
             fgui.GRoot.inst.hideWindow(wind)
         }
@@ -271,9 +278,9 @@ export abstract class BaseUI extends fgui.Window {
     protected OnBtnClose()
     {
         console.log("点击了关闭按钮===222")
-        this.hide()
+        // this.hide()
         //super.hide()
-        //UIMgr.Instance.HideWind();
+        UIMgr.Instance.HideWind(this);
     }
 
     protected onShown()
